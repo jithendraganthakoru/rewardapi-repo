@@ -38,9 +38,10 @@ public class CustomerTransRewardPointController {
 	/**
 	 * @param tranactions
 	 * @return response contains list of customer data and it contains customerId and monthly earned reward points and total reward points
+	 * @throws Exception 
 	 */
 	@PostMapping("/getCustomerRewardPointDetails")
-	public List<RewardResponse> getCustomerRewardPointDetail(@RequestBody List<Transaction> tranactions) {
+	public List<RewardResponse> getCustomerRewardPointDetail(@RequestBody List<Transaction> tranactions) throws Exception {
 		
 		logger.info("list of customer transactions:::::"+tranactions);
 

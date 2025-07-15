@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.ToString;
-
 
 @Data
 @NoArgsConstructor
@@ -16,8 +16,10 @@ import lombok.ToString;
 @ToString
 public class Transaction {
 	
+	@NonNull
 	private String customerId;
 	
+	@NonNull
 	private Integer amount;
 	
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")

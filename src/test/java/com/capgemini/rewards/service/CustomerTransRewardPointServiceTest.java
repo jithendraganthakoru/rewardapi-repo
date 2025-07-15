@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.capgemini.rewards.model.RewardResponse;
@@ -19,11 +20,11 @@ import com.capgemini.rewards.model.Transaction;
 @ExtendWith(MockitoExtension.class)
 public class CustomerTransRewardPointServiceTest {
 
+	@Autowired
+	private CustomerTransRewardPointService customerTransRewardPointService;
 	
-	CustomerTransRewardPointService customerTransRewardPointService = new CustomerTransRewardPointService();
-
 	@Test
-	public void calculateRewardsTest() {
+	public void calculateRewardsTest() throws Exception {
 
 		List<Transaction> list = new ArrayList<Transaction>();
 		list.add(new Transaction("1001", 120, LocalDate.of(2025, 06, 06)));
@@ -40,25 +41,25 @@ public class CustomerTransRewardPointServiceTest {
 	}
 
 	@Test
-	public void testCalculateRewards_EmptyList() {
+	public void testCalculateRewardPoints_EmptyList() throws Exception {
 		List<RewardResponse> responses = customerTransRewardPointService.calculateRewards(List.of());
 		assertTrue(responses.isEmpty());
 	}
 
 	@Test
-	public void testCalculatePoints_LessThan50() {
+	public void testCalculateRewardPoints_LessThan50() {
 		int points = customerTransRewardPointService.calculatePoints(40);
 		assertEquals(0, points);
 	}
 
 	@Test
-	void testCalculatePoints_Between50And100() {
+	void testCalculateRewardPoints_Between50And100() {
 		int points = customerTransRewardPointService.calculatePoints(75);
 		assertEquals(25, points);
 	}
 
 	@Test
-	void testCalculatePoints_Above100() {
+	void testCalculateRewardPoints_Above100() {
 		int points = customerTransRewardPointService.calculatePoints(120);
 		assertEquals(90, points);
 	}

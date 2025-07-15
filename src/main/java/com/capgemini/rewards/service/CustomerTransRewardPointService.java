@@ -38,7 +38,7 @@ public class CustomerTransRewardPointService {
 	 * controller
 	 * 
 	 */
-	public List<RewardResponse> calculateRewards(List<Transaction> tranactions) {
+	public List<RewardResponse> calculateRewards(List<Transaction> tranactions) throws Exception{
 		
 	    List<RewardResponse> rewardList = new ArrayList<>();
 
@@ -86,9 +86,14 @@ public class CustomerTransRewardPointService {
 	 * No points are awarded for the first $50.
 	 * 
 	 */
-	public int calculatePoints(double amount) {
+	public int calculatePoints(double amount) throws IllegalArgumentException {
 		 
 	        int points = 0;
+	        
+	        if(amount==0.0) {
+	        	
+	        	throw new IllegalArgumentException("Amount cannot be zero");
+	        }
 	        
 	        if (amount > 100) {
 	            points += (int)((amount - 100) * 2);
