@@ -33,9 +33,13 @@ e)Lombok
 
 Url: http://localhost:2025/getCustomerRewardPointDetails   HttpMethod: Post
 
-Request Payload:
 
-[    
+
+
+
+Request Payload:
+  
+  [    
     {
          "customerId": "1001",
         "amount": 120,
@@ -68,9 +72,6 @@ Request Payload:
         "date": "06-07-2025"
     }
 ]
-
-
-
 
 Response:
 
