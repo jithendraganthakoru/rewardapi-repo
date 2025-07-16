@@ -40,10 +40,15 @@ public class CustomerTransRewardPointService {
 	 */
 	public List<RewardResponse> calculateRewards(List<Transaction> tranactions) throws Exception{
 		
+		
+		if(tranactions.size()==0 || tranactions==null) {
+			
+			throw new RuntimeException("Customer Transactions should not empty or null");
+		}
+		
 	    List<RewardResponse> rewardList = new ArrayList<>();
 
 	    Map<String, List<Transaction>> customerTxnMap = tranactions.stream().collect(Collectors.groupingBy(Transaction::getCustomerId, LinkedHashMap::new, Collectors.toList()));
-	    
 	    
 	    logger.info("groupBy trasnactions based on customerId:::::"+customerTxnMap);
 
@@ -86,11 +91,11 @@ public class CustomerTransRewardPointService {
 	 * No points are awarded for the first $50.
 	 * 
 	 */
-	public int calculatePoints(double amount) throws IllegalArgumentException {
+	public int calculatePoints(Integer amount) throws IllegalArgumentException {
 		 
 	        int points = 0;
 	        
-	        if(amount==0.0) {
+	        if(amount==0) {
 	        	
 	        	throw new IllegalArgumentException("Amount cannot be zero");
 	        }

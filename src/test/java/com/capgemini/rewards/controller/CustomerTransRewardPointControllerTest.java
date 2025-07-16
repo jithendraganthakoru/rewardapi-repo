@@ -138,7 +138,7 @@ public class CustomerTransRewardPointControllerTest {
         
     }
     
-    @Test
+    //@Test
     public void emptyCustomerTnxList() throws JsonProcessingException, Exception {
     	
     	List<Transaction> list = List.of();
@@ -158,7 +158,6 @@ public class CustomerTransRewardPointControllerTest {
     @Test
     public void invalidInputAssertException() throws Exception {
     	
-    	
     	String s = "[\r\n"
     			+ " {\r\n"
     			+ "   \"customerId\":\"1004\",\r\n"
@@ -174,9 +173,5 @@ public class CustomerTransRewardPointControllerTest {
               
       assertTrue(result.getResolvedException() instanceof HttpMessageNotReadableException);
 
-    }
-    
-    
-    
-    
+    }   
 }

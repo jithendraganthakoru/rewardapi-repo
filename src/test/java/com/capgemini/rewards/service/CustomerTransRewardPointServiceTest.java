@@ -1,15 +1,13 @@
 package com.capgemini.rewards.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -17,7 +15,6 @@ import com.capgemini.rewards.model.RewardResponse;
 import com.capgemini.rewards.model.Transaction;
 
 @SpringBootTest
-@ExtendWith(MockitoExtension.class)
 public class CustomerTransRewardPointServiceTest {
 
 	@Autowired
@@ -42,8 +39,12 @@ public class CustomerTransRewardPointServiceTest {
 
 	@Test
 	public void testCalculateRewardPoints_EmptyList() throws Exception {
-		List<RewardResponse> responses = customerTransRewardPointService.calculateRewards(List.of());
-		assertTrue(responses.isEmpty());
+
+	    RuntimeException exception = assertThrows(RuntimeException.class, () -> {
+	        customerTransRewardPointService.calculateRewards(List.of());
+	    });
+	    assertEquals("Customer Transactions should not empty or null", exception.getMessage());
+		
 	}
 
 	@Test
