@@ -35,9 +35,9 @@ Url: http://localhost:2025/getCustomerRewardPointDetails   HttpMethod: Post
 
 Request Payload:
 
-[
+[    
     {
-        "customerId": "1001",
+         "customerId": "1001",
         "amount": 120,
         "date": "06-06-2025"
     },
