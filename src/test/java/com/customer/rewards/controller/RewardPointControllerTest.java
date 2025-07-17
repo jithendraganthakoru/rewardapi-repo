@@ -18,6 +18,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * 
+ *   This Class Responsible to perform integration test to check entire flow of an application
+ * 
+ */
 @SpringBootTest
 @AutoConfigureMockMvc
 public class RewardPointControllerTest {

@@ -36,8 +36,7 @@ public class RewardPointController {
 	
 	/**
 	 * @param customerId
-	 * @return response contains list of customer data and it contains customerId and monthly earned reward points
-	 *         and total reward points
+	 * @return response contains customerId, monthly earned reward points and total reward points
 	 * @throws Exception
 	 */
 	@GetMapping("/getCustomerRewardPointDetails/{customerId}")

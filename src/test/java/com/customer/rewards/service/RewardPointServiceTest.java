@@ -17,6 +17,9 @@ import com.customer.rewards.model.RewardResponse;
 import com.customer.rewards.model.Transaction;
 import com.customer.rewards.repository.RewardsPointRespository;
 
+/**
+ * This class responsible to perform junit testing with mockito for component based testing
+ */
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class RewardPointServiceTest {
