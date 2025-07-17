@@ -1,10 +1,10 @@
-package com.capgemini.rewards;
+package com.customer.rewards;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CustomerTranasctionRewardPointsAppTests {
+class RewardPointApplicationTests {
 
 	@Test
 	void contextLoads() {

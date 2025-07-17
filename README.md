@@ -1,28 +1,38 @@
-                                Customer Transaction Rewards Points API
+                          *********** Customer Transaction Rewards Points API *************
 
 This Spring Boot application calculates monthly and total reward points for customers based on their transaction history. 
-It exposes a REST API that accepts a list of transactions and returns reward details per customer.
+
+It exposes a REST API endpoint that accepts customerId as a pathvariable and returns reward point details per customer.
 
 UseCase:
-i)Accepts customer transactions via REST API
 
-ii)Calculates reward points:
-   a) 2 points for every dollar spent over $100
+a)Exposes an endpoint and accepts customerId as input pathvariable
+
+b)Calculates reward points:
+   a)2 points for every dollar spent over $100
    b)1 point for every dollar spent between $50 and $100
+   c)0 points for every dollar spent less than $50
 
-iii)The restful api will Returns structured response with customer ID, monthly points, and total points.
+c)The restful api will Returns structured response with customer ID, monthly points, and total points.
 
 Implementation:
+
 As part of the springboot application we have created the below layers 
 
   a)Controller layer (RestController) -to handle http requests
 
-  b)Service Layer - To handle the business logic
+  b)Service Layer - Service class will internally use the repoistory object to get the data based on customer id.
+  
+  c)Repository Layer - Custom dataset created. which returns the customer transactions data based on customer id.
 
-  c) Global Exception Handler - To handle exception globally
+  c) Global Exception Handler - To handle exception globally if unknown exceptions
+
+
+Junit Test Cases:
 
 Integration Test cases - to test the whole flow of the application
-Junit Test Cases using junit5 and Mockito
+
+Junit Test Cases using junit5 and Mockito framework annotations
 
 Technology Used:
 a)Java17
@@ -31,73 +41,40 @@ c)Junit5
 d)Mockito
 e)Lombok
 
-Url: http://localhost:2025/getCustomerRewardPointDetails   HttpMethod: Post
+Url: http://localhost:2025/getCustomerRewardPointDetails/{customerId}   HttpMethod: GET
 
+pathvariable (customerId) ranges from "1001" to "1005"
 
-
-
-
-Request Payload:
-  
-  [    
-    {
-         "customerId": "1001",
-        "amount": 120,
-        "date": "06-06-2025"
-    },
-    {
-        "customerId": "1001",
-        "amount": 180,
-        "date": "10-05-2025"
-    },
-    {
-  
-        "customerId": "1001",
-        "amount": 100,
-        "date": "05-07-2025"
-    },
-    {
-        "customerId": "1002",
-        "amount": 20,
-        "date": "10-06-2025"
-    },
-    {
-        "customerId": "1002",
-        "amount": 110,
-        "date": "11-06-2025"
-    },
-    {
-        "customerId": "1003",
-        "amount": 130,
-        "date": "06-07-2025"
-    }
-]
-
+customerId: "1001"
+==================
 Response:
+========
 
 [
-
   {
     "customerId": "1001",
     "monthlyPoints": {
-      "June": 90,
+      "June": 70,
+      "May": 90
+    },
+    "totalPoints": 160
+  }
+]
+
+customerId: "1005"
+=================
+
+Response:
+========
+
+[
+  {
+    "customerId": "1005",
+    "monthlyPoints": {
+      "June": 150,
       "May": 210,
-      "July": 50
+      "July": 166
     },
-    "totalPoints": 350
-  },
-  {
-   "customerId": "1002",
-    "monthlyPoints": {
-      "June": 70
-    },
-    "totalPoints": 70
-  },
-  {
-    "customerId": "1003",
-    "monthlyPoints": {
-      "July": 110
-    },
-    "totalPoints": 110
+    "totalPoints": 526
   }
 ]

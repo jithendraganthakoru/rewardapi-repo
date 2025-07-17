@@ -1,13 +1,12 @@
-package com.capgemini.rewards;
+package com.customer.rewards;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CustomerTranasctionRewardPointsApp {
+public class RewardPointApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CustomerTranasctionRewardPointsApp.class, args);
+		SpringApplication.run(RewardPointApplication.class, args);
 	}
-
 }

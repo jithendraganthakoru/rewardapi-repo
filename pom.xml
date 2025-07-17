@@ -8,7 +8,7 @@
 		<version>3.5.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.capgemini.rewards</groupId>
+	<groupId>com.customer.rewards</groupId>
 	<artifactId>customer-tranasction-reward-points-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>customer-tranasction-reward-point-api</name>

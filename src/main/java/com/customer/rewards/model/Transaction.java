@@ -1,4 +1,4 @@
-package com.capgemini.rewards.model;
+package com.customer.rewards.model;
 
 import java.time.LocalDate;
 
