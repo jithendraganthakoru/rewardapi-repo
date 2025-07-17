@@ -49,6 +49,8 @@ public class RewardPointService {
 
 			throw new RuntimeException("CustomerId Not Found");
 		}
+		
+		logger.info("customerId transaction data based on customerId::::: "+tranactions);
 
 		List<RewardResponse> rewardList = new ArrayList<RewardResponse>();
 
