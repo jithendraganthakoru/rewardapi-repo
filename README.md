@@ -22,20 +22,15 @@ As part of the springboot application we have created the below layers
   c) Global Exception Handler - To handle exception globally
 
 Integration Test cases - to test the whole flow of the application
-Junit Test Cases using junit5 and Mockito
+Junit Test Cases using junit5.
 
 Technology Used:
 a)Java17
 b)springboot 3.5.3
 c)Junit5
-d)Mockito
 e)Lombok
 
 Url: http://localhost:2025/getCustomerRewardPointDetails   HttpMethod: Post
-
-
-
-
 
 Request Payload:
   
