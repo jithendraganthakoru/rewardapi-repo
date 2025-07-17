@@ -46,9 +46,6 @@ pathvariable (customerId) ranges from "1001" to "1005"
 
 customerId: "1001"
 ==================
-
-customerId: "1001"
-==================
 Response:
 ========
 [
