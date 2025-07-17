@@ -158,6 +158,7 @@ public class CustomerTransRewardPointControllerTest {
     @Test
     public void invalidInputAssertException() throws Exception {
     	
+    	
     	String s = "[\r\n"
     			+ " {\r\n"
     			+ "   \"customerId\":\"1004\",\r\n"
