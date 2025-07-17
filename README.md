@@ -1,4 +1,4 @@
-                          *********** Customer Transaction Rewards Points API *************
+                                    Customer Transaction Rewards Points API  
 
 This Spring Boot application calculates monthly and total reward points for customers based on their transaction history. 
 
@@ -28,70 +28,29 @@ As part of the springboot application we have created the below layers
   c) Global Exception Handler - To handle exception globally if unknown exceptions
 
 
-Junit Test Cases:
+**Junit Test Cases:**
 
-Integration Test cases - to test the whole flow of the application
-<<<<<<< HEAD
+ a)Integration Test cases - to test the whole flow of the application
+ 
+ b)Junit Test Cases using junit5 and Mockito framework annotations
 
-Junit Test Cases using junit5 and Mockito framework annotations
-=======
-Junit Test Cases using junit5.
->>>>>>> a9656125ccb0597ec92c8c335c0d1c28df252d82
-
-Technology Used:
+**Technology Used:**
 a)Java17
 b)springboot 3.5.3
 c)Junit5
 e)Lombok
 
-Url: http://localhost:2025/getCustomerRewardPointDetails/{customerId}   HttpMethod: GET
+**Url:** http://localhost:2025/getCustomerRewardPointDetails/{customerId}   HttpMethod: GET
 
-<<<<<<< HEAD
 pathvariable (customerId) ranges from "1001" to "1005"
 
 customerId: "1001"
 ==================
-=======
-Request Payload:
-  
-  [    
-    {
-         "customerId": "1001",
-        "amount": 120,
-        "date": "06-06-2025"
-    },
-    {
-        "customerId": "1001",
-        "amount": 180,
-        "date": "10-05-2025"
-    },
-    {
-  
-        "customerId": "1001",
-        "amount": 100,
-        "date": "05-07-2025"
-    },
-    {
-        "customerId": "1002",
-        "amount": 20,
-        "date": "10-06-2025"
-    },
-    {
-        "customerId": "1002",
-        "amount": 110,
-        "date": "11-06-2025"
-    },
-    {
-        "customerId": "1003",
-        "amount": 130,
-        "date": "06-07-2025"
-    }
-]
 
->>>>>>> a9656125ccb0597ec92c8c335c0d1c28df252d82
+customerId: "1001"
+==================
 Response:
 ========
-
 [
   {
     "customerId": "1001",
@@ -105,13 +64,11 @@ Response:
 
 customerId: "1005"
 =================
-
 Response:
 ========
-
 [
-  {
-    "customerId": "1005",
+{
+  "customerId": "1005",
     "monthlyPoints": {
       "June": 150,
       "May": 210,
