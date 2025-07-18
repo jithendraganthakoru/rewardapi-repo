@@ -61,9 +61,9 @@ rewardapi-repo/
 │               │   └── RewardPointControllerTest.java
 │               └── service/
 │                   └── RewardPointServiceImplTest.java
-
+├── pom.xml
+├── README.md
 ```
-
 
 ## Implementation:
 
