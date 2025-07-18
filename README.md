@@ -31,7 +31,6 @@ The API returns a structured response with:
 ---
 
 ##  Project Structure
-
 rewardapi-repo/
 ├── src/
 │   ├── main/
@@ -99,6 +98,8 @@ As part of the springboot application we have created the below layers
     "totalPoints": 160
   }
 ]
+
+---
 
 ### 2. Get Reward Points for All Customers
 
