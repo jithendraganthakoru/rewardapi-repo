@@ -39,12 +39,19 @@ public class RewardPointController {
 	 * @return response contains customerId, monthly earned reward points and total reward points
 	 * @throws Exception
 	 */
-	@GetMapping("/getCustomerRewardPointDetails/{customerId}")
+	@GetMapping("/getCustomerRewardPointDetail/{customerId}")
 	public List<RewardResponse> getCustomerRewardPointDetail(@PathVariable String customerId) throws Exception {
 		
 		logger.info("customerId:::::"+customerId);
 		
 		return customerTransRewardPointService.calculateRewards(customerId);
+	}
+	
+	
+	@GetMapping("/getAllCustomerRewardPointDetails")
+	public List<RewardResponse>  getAllCustomerRewardPointDetails(){
+		
+		return customerTransRewardPointService.calculateAllCustomerReward();
 	}
 
 }

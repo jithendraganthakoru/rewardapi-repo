@@ -4,13 +4,16 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.stereotype.Repository;
+
+import com.customer.rewards.exception.CustomerNotFoundException;
 import com.customer.rewards.model.Transaction;
 
 @Repository
 public class RewardsPointRespository {
 
-	private final Map<String, List<Transaction>> data = new HashMap<>();
+	private final  Map<String, List<Transaction>> data = new HashMap<>();
 
 	/**
 	 *   maintains the custom dataset for multiple customers 
@@ -36,9 +39,24 @@ public class RewardsPointRespository {
 	/**
 	 * @param customerId
 	 * @return based on customerId it will returns the customer transaction data
+	 * @throws CustomerNotFoundException 
 	 */
-	public List<Transaction> findByCustomerId(String customerId) {
+	public List<Transaction> findByCustomerId(String customerId) throws CustomerNotFoundException{
+		
+		if(data.get(customerId) == null) {
+			
+			throw new CustomerNotFoundException("CustomerId "+customerId+ " Not Found");
+		}
+		
 		return data.getOrDefault(customerId, List.of());
 	}
+	
 
+	/**
+	 * @return  Returns all customer transactions
+	 */
+	public Map<String, List<Transaction>> getAllCustomerTransacionData() {
+		
+		return data;
+	}
 }

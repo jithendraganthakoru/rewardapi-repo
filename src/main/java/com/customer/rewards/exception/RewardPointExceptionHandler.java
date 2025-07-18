@@ -24,4 +24,15 @@ public class RewardPointExceptionHandler {
 	    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
 	                         .body("An unexpected error occurred: " + ex.getMessage());
 	}
+	
+	/**
+	 * @param exception
+	 * @return a ResponseEntity with Http 404 status and custom error msg as CustomerId Not Found
+	 */
+	@ExceptionHandler(CustomerNotFoundException.class)
+    public ResponseEntity<Object> handleCustomerNotFoundException(CustomerNotFoundException exception) {
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(exception.getMessage());
+    } 
 }

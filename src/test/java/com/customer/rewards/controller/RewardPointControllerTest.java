@@ -4,8 +4,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.util.List;
 import java.util.Map;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -13,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
+
 import com.customer.rewards.model.RewardResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -20,7 +23,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 
- *   This Class Responsible to perform integration test to check entire flow of an application
+ * This Class Responsible to perform integration test to check entire flow of an
+ * application
  * 
  */
 @SpringBootTest
@@ -37,7 +41,7 @@ public class RewardPointControllerTest {
 	public void getCustomerRewardPointDetailTest() throws Exception {
 
 		MvcResult result = mockMvc
-				.perform(get("/getCustomerRewardPointDetails/1001").contentType(MediaType.APPLICATION_JSON))
+				.perform(get("/getCustomerRewardPointDetail/1001").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn();
 
 		String response = result.getResponse().getContentAsString();
@@ -66,11 +70,11 @@ public class RewardPointControllerTest {
 	public void rewardPointDetailTest_customerIdAbsent() throws Exception {
 
 		MvcResult result = mockMvc
-				.perform(get("/getCustomerRewardPointDetails/").contentType(MediaType.APPLICATION_JSON))
+				.perform(get("/getCustomerRewardPointDetail/").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().is5xxServerError()).andReturn();
 
 		int statusCode = result.getResponse().getStatus();
-		
+
 		assertEquals(500, statusCode);
 
 	}
@@ -78,11 +82,28 @@ public class RewardPointControllerTest {
 	@Test
 	public void getCustomerRewardPoint_invalidCustomerId() throws JsonProcessingException, Exception {
 
-		MvcResult result = mockMvc.perform(
-				get("/getCustomerRewardPointDetails/101").contentType(MediaType.APPLICATION_JSON).content("1002"))
-				.andExpect(status().is5xxServerError()).andReturn();
+		MvcResult result = mockMvc
+				.perform(get("/getCustomerRewardPointDetail/101").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().is4xxClientError()).andReturn();
 
-		assertTrue(result.getResponse().getContentAsString().contains("CustomerId Not Found"));
+		assertEquals("CustomerId 101 Not Found", result.getResponse().getContentAsString());
 	}
 
+	@Test
+	public void getCustomerRewardPoins() throws JsonProcessingException, Exception {
+
+		MvcResult result = mockMvc
+				.perform(get("/getAllCustomerRewardPointDetails").contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andReturn();
+
+		String response = result.getResponse().getContentAsString();
+
+		ObjectMapper mapper = new ObjectMapper();
+
+		List<RewardResponse> list = mapper.readValue(response, new TypeReference<List<RewardResponse>>() {
+			
+		});
+		
+		assertEquals(5,list.size());
+	}
 }

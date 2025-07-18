@@ -5,14 +5,17 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
+
 import java.time.LocalDate;
 import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import com.customer.rewards.model.RewardResponse;
 import com.customer.rewards.model.Transaction;
 import com.customer.rewards.repository.RewardsPointRespository;
@@ -28,7 +31,7 @@ public class RewardPointServiceTest {
 	RewardsPointRespository repositroy;
 
 	@InjectMocks
-	private RewardPointService customerTransRewardPointService;
+	private RewardPointServiceImpl customerTransRewardPointService;
 
 	@Test
 	void testCalculateRewards_Success() throws Exception {
@@ -88,11 +91,13 @@ public class RewardPointServiceTest {
 
 	@Test
 	public void testCalculateRewardPoints_EmptyList() throws Exception {
+		
+		String customerId = "1008";
 
 		RuntimeException exception = assertThrows(RuntimeException.class, () -> {
-			customerTransRewardPointService.calculateRewards("1008");
+			customerTransRewardPointService.calculateRewards(customerId);
 		});
-		assertEquals("CustomerId Not Found", exception.getMessage());
+		assertEquals("CustomerId " +customerId+ " Not Found", exception.getMessage());
 
 	}
 
