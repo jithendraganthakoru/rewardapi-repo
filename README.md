@@ -5,7 +5,6 @@ This Spring Boot application calculates monthly and total reward points for cust
 It exposes a REST API endpoint that accepts customerId as a pathvariable and returns reward point details per customer.
 
 UseCase:
-
 a)Exposes an endpoint and accepts customerId as input pathvariable
 
 b)Calculates reward points:
@@ -16,6 +15,39 @@ b)Calculates reward points:
 c)The restful api will Returns structured response with customer ID, monthly points, and total points.
 
 Implementation:
+
+Project Structure:
+
+
+rewardapi-repo/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/customer/rewards/
+│   │   │       ├── RewardPointApplication.java
+│   │   │       ├── controller/
+│   │   │       │   └── RewardPointController.java
+│   │   │       ├── exception/
+│   │   │       │   ├── CustomerNotFoundException.java
+│   │   │       │   └── RewardPointExceptionHandler.java
+│   │   │       ├── model/
+│   │   │       │   ├── RewardResponse.java
+│   │   │       │   └── Transaction.java
+│   │   │       ├── repository/
+│   │   │       │   └── RewardsPointRepository.java
+│   │   │       └── service/
+│   │   │           ├── RewardPointService.java
+│   │   │           └── RewardPointServiceImpl.java
+│   │   └── resources/
+│   │       └── application.properties
+│   └── test/
+│       └── java/
+│           └── com/customer/rewards/
+│               ├── RewardPointApplicationTests.java
+│               ├── controller/
+│               │   └── RewardPointControllerTest.java
+│               └── service/
+│                   └── RewardPointServiceImplTest.java
 
 As part of the springboot application we have created the below layers 
 
