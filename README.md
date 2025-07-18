@@ -31,6 +31,7 @@ The API returns a structured response with:
 ---
 
 ##  Project Structure
+```text
 rewardapi-repo/
 ├── src/
 │   ├── main/
@@ -61,9 +62,10 @@ rewardapi-repo/
 │               └── service/
 │                   └── RewardPointServiceImplTest.java
 
+```
+
 
 ## Implementation:
-
 
 As part of the springboot application we have created the below layers 
 ## 🧩 Application Layers
@@ -98,7 +100,7 @@ As part of the springboot application we have created the below layers
     "totalPoints": 160
   }
 ]
-
+```
 ---
 
 ### 2. Get Reward Points for All Customers
@@ -153,3 +155,4 @@ As part of the springboot application we have created the below layers
     "totalPoints": 160
   }
 ]
+```
